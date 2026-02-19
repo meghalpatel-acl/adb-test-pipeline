@@ -3,3 +3,5 @@
 # This is a test script
 
 nvidia-smi
+
+jtop
