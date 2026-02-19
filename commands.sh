@@ -4,4 +4,4 @@
 
 nvidia-smi
 
-python3 live_feed.py
+python3 object_detection.py
