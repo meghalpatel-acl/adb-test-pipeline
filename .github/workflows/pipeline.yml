@@ -5,7 +5,7 @@ on:
     branches: [ "main" ]
     
     paths:
-      - 'status.txt'
+      - 'commands.sh'
       
   pull_request:
     branches: [ "main" ]
@@ -39,7 +39,8 @@ jobs:
 
       - name: Run script
         run: |
-          echo "Running embedding comparison logic..."
+          echo "Running commands file..."
+          ./commands.sh
           echo "Test job completed."
 
   deploy: 
