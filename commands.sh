@@ -4,4 +4,3 @@
 
 nvidia-smi
 
-jtop
