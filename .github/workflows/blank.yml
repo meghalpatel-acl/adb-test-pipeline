@@ -1,0 +1,53 @@
+name: CI
+
+on:
+  push:
+    branches: [ "main" ]
+    
+    paths:
+      - 'status.txt'
+      
+  pull_request:
+    branches: [ "main" ]
+    
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+
+  build:
+    # The type of runner that the job will run on
+    runs-on: self-hosted
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Start build
+        run:  echo "Starting build.."
+        
+        
+  test:
+    runs-on: self-hosted
+    needs: build
+
+    steps: 
+      - uses: actions/checkout@v4
+
+      - name: Start test phase
+        run: echo "Starting test job..."
+
+      - name: Run script
+        run: |
+          echo "Running embedding comparison logic..."
+          echo "Test job completed."
+
+  deploy: 
+    runs-on: self-hosted
+    needs: test
+
+    steps:
+      - name: Deploy stage
+        run: |
+          echo "All checks passed."
+          echo "Code is ready to deploy."
